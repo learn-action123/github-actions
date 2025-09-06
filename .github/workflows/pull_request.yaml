@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 name: push-workflow
 on: 
   pull_request:
     types: [opened]
 
-=======
-name: push-workflow 1
-on: pull_request
->>>>>>> d6760b0f42f205b9a80e0ea7e1538fe4496302ba
 
 jobs:
   push-job:
