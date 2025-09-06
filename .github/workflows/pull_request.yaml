@@ -1,5 +1,8 @@
-name: push-workflow 1234
-on: pull_request
+name: push-workflow
+on: 
+  pull_request:
+    types: [opened]
+
 
 jobs:
   push-job:
