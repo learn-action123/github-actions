@@ -10,20 +10,20 @@ on: #트리거 설정
 jobs: # job 설정
   test: #job 이름
     if: github.event.action == 'opened' || github.event.action == 'synchronize'
-    runs-on: uduntu-latest
+    runs-on: ubuntu-latest
     steps: # job 하위 단계
     - name: checkout # step 이름
       uses: actions/checkout@v4 #??
 
   image-build:
     if: github.event.pull_request.merged == true
-    runs-on: udbuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: checkout
       uses: actions/checkout@v4
   
   deploy:
-    runs-on: udbuntu-latest
+    runs-on: ubuntu-latest
     needs: [image-build] #??
     steps:
     - name: checkout
