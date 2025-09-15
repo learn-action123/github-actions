@@ -1,0 +1,30 @@
+name: cicd-1 #트리거 이름
+on: #트리거 설정
+  pull_request: #트리거 요소
+    types: [opened, synchronize, closed] #트리거 설정
+    branches: [dev] # 브랜치 필터링
+    paths: # 경로 필터링
+    - 'my-app/**'
+
+
+jobs: # job 설정
+  test: #job 이름
+    if: github.event.action == 'opened' || github.event.action == 'synchronize'
+    runs-on: uduntu-latest
+    steps: # job 하위 단계
+    - name: checkout # step 이름
+      uses: actions/checkout@v4 #??
+
+  image-build:
+    if: github.event.pull_request.merged == true
+    runs-on: udbuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+  
+  deploy:
+    runs-on: udbuntu-latest
+    needs: [image-build] #??
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
